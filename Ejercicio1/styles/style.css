@@ -1,0 +1,18 @@
+*{
+    color:#180A34;
+    font-size: 14px;
+}
+.container {
+    width: 150px; 
+    height: 150px; 
+    border-top: 0; 
+    background-color: lightskyblue;
+}
+.navbar{
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+}
+p{
+    text-align: right;
+}

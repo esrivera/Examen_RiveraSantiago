@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cita perfecta</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+  </head>
+  <body>
+    <!-- navigation -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Cita Perfecta</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="home()"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="admin()">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- end-navigation -->
+    <!-- main-component -->
+    <div id="main"></div>
+    <!-- end-main-component -->
+    <footer>
+      <div class="d-flex justify-content-between p-5 bg-light">
+        <span>By:Santi</span>
+        <span>ESPE</span>
+      </div>
+    </footer>
+  </body>
+  <script>
+    window.onload = home = function () {
+      var main = document.getElementById("main");
+      fetch("./src/login.html")
+        .then((e) => e.text())
+        .then((text) => {
+          main.innerHTML = text;
+        });
+    };
+    function register() {
+      fetch("./src/register.html")
+        .then((e) => e.text())
+        .then((e) => {
+          var main = document.getElementById("main");
+          main.innerHTML = e;
+        });
+    }
+    function recoverAccount() {
+      fetch("./src/recover-acount.html")
+        .then((e) => e.text())
+        .then((e) => {
+          var main = document.getElementById("main");
+          main.innerHTML = e;
+        });
+    }
+    function admin() {
+      fetch("./src/admin.html")
+        .then((e) => e.text())
+        .then((e) => {
+          var main = document.getElementById("main");
+          main.innerHTML = e;
+        });
+    }
+    function registerEstablishment() {
+      fetch("./src/admin-pages/register-establishment.html")
+        .then((e) => e.text())
+        .then((e) => {
+          var main = document.getElementById("main-admin");
+          main.innerHTML = e;
+        });
+    }
+    function byEstablishment(event) {
+      let e = document.getElementById("inputEstablishment");
+      let option = e.options[e.selectedIndex].value;
+      if (option === "r") {
+        document.getElementById("restaurant").classList.remove("d-none");
+        document.getElementById("transport").classList.add("d-none");
+        document.getElementById("hotel").classList.add("d-none");
+      }
+      if (option === "t") {
+        document.getElementById("transport").classList.remove("d-none");
+        document.getElementById("restaurant").classList.add("d-none");
+        document.getElementById("hotel").classList.add("d-none");
+      }
+      if (option === "hm") {
+        document.getElementById("hotel").classList.remove("d-none");
+        document.getElementById("transport").classList.add("d-none");
+        document.getElementById("restaurant").classList.add("d-none");
+      }
+    }
+  </script>
+</html>
